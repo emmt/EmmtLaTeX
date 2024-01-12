@@ -96,9 +96,11 @@ s/\\div(\b|_)/÷$1/g;        # division sign
 s/\\ldots(\b|_)/…$1/g;      # ellipsis
 s/\\ell(\b|_)/ℓ$1/g;
 s/\\forall(\b|_)/∀$1/g;     # for all
-s/\\partial(\b|_)/∂$1/g;    # partial differential
+s/\\partial\b */∂/g;        # partial differential
+s/\\partial_/∂_/g;          # partial differential
 s/\\varnothing(\b|_)/∅$1/g; # empty set
-s/\\nabla(\b|_)/∇$1/g;      # nabla, gradient
+s/\\nabla\b */∇/g;          # nabla, gradient
+s/\\nabla_/∇_/g;            # nabla, gradient
 s/\\in(\b|_)/∈$1/g;         # element of
 s/\\not\\in(\b|_)/∉$1/g;    # not an element of
 s/\\top(\b|_)/⊤$1/g;        # down tack, top
@@ -127,6 +129,3 @@ s/\\cdot(\b|_)/⋅$1/g; # dot operator
 s/\\times(\b|_)/×$1/g; # multiplication sign (U00D7)
 #s/\\times(\b|_)/✕$1/g; # multiplication x (U2715)
 #s/\\times(\b|_)/⨯$1/g; # vector or cross product (U2A2F)
-
-# Post-processing.
-s/([∂∇]) +/$1/g; # remove spaces after some operators
