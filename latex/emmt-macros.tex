@@ -1,0 +1,269 @@
+%% To avoid errors like "Command \iint already defined.", use AMS math packages
+%% *before* other packages such as `txfonts`.
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Page setup.
+%\usepackage[left=9mm, right=9mm, top=20mm, bottom=20mm,columnsep=8mm]{geometry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Graphics, colors and hyperlinks.
+
+\usepackage{graphicx}
+\graphicspath{{figs/}}
+
+%\usepackage[dvipsnames,usenames]{color}
+%\usepackage[dvipsnames,hyperref]{xcolor}
+\newcommand{\oops}[1]{\textcolor[named]{BrickRed}{#1}}
+
+%\colorlet{HyperColor}{MidnightBlue}
+%\colorlet{ChapColor}{OliveGreen}
+%\colorlet{MyLinkColor}{HyperColor}
+%\colorlet{MyURLColor}{HyperColor}
+%\colorlet{MyCiteColor}{HyperColor}
+%\colorlet{MyFileColor}{HyperColor}
+%\colorlet{MyMenuColor}{HyperColor}
+%\colorlet{MyPageColor}{HyperColor}
+%\hypersetup{
+%  %pdftitle={\TheTitle},
+%  %pdfauthor={\TheAuthors},
+%  unicode=true,
+%  linkcolor=MyLinkColor,
+%  urlcolor=MyURLColor,
+%  citecolor=MyCiteColor,
+%  filecolor=MyFileColor,
+%  menucolor=MyMenuColor}
+
+%\usepackage[unicode=true,
+% bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+% breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=true,
+% citecolor=MidnightBlue,]{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Fonts.
+
+%\usepackage{txfonts}
+%\usepackage{lmodern}
+
+% See https://tex.stackexchange.com/questions/204998/double-struck-zero-and-one
+% and https://tex.stackexchange.com/questions/215822/use-both-boondox-ds-and-the-blackboard-fonts-from-amsfonts
+% for hints to have double-struck numbers.
+\DeclareMathAlphabet{\mymathbb}{U}{BOONDOX-ds}{m}{n}
+
+\usepackage[bb=ams]{mathalfa}
+%\usepackage{bbm}
+%\usepackage{dsfont}
+%\usepackage[nointegrals]{wasysym} % avoid clash with amsmath \iint and \iiint
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Algorithms.
+
+\usepackage[ruled,vlined]{algorithm2e}
+\DontPrintSemicolon
+\SetKw{KwAnd}{and}
+\SetKw{KwOr}{or}
+\SetKw{KwBreak}{break}
+
+%\usepackage{algpseudocode}
+
+%\renewcommand{\CommentSty}[1]{\small #1}
+%\SetKwComment{Comment}{}{}
+\SetKwComment{Comment}{\ensuremath{\vartriangleleft} }{}
+%\newcommand{\CommentFormat}[1]{\textbf{\small #1}}
+\newcommand{\CommentFormat}[1]{{\small #1}}
+\SetCommentSty{CommentFormat}
+\newcommand{\CommentLine}[1]{{\normalsize\bf\ensuremath{\blacksquare} #1}\;}
+
+% For side-comments (normally produced by \Comment*{TEXT}), when the text
+% is too long, \SideCommentL{WIDTH}{TEXT} or \SideCommentL{WIDTH}{TEXT}
+% with produce a multi-line comment of given width and following style:
+%   - \SideCommentL: left-justified and vertically centered;
+%   - \SideCommentR: right-justified and top line vertically aligned;
+\newcommand{\SideCommentL}[2]{\Comment*{\parbox[t]{#1}{\raggedleft%
+  \CommentSty{#2}}}}
+\newcommand{\SideCommentR}[2]{\Comment*{\parbox{#1}{\raggedright%
+  \CommentSty{#2}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Drawing.
+
+%\usepackage{tikz}
+%\usetikzlibrary{calc}
+%\usetikzlibrary{arrows.meta}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Tables.
+
+% Table settings:
+%\usepackage{array}
+%\usepackage{booktabs}
+%\colorlet{tableheadcolor}{gray!25}
+%\colorlet{tablerowcolor}{gray!12.5}
+%\newcommand{\TopRule}{\specialrule{\heavyrulewidth}{0pt}{0pt}}
+%\newcommand{\BottomRule}{\specialrule{\lightrulewidth}{0pt}{0pt}}
+%\extrarowheight2pt
+%\newcolumntype{P}[1]{>{\raggedright}p{#1}}
+%\newcolumntype{M}[1]{>{\raggedright}m{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Abbreviations.
+
+\usepackage{xspace}
+\newcommand*{\etal}{\emph{et al.}\xspace}
+\newcommand*{\etc}{\emph{etc.}\xspace}
+\newcommand*{\eg}{\emph{e.g.}\xspace}
+\newcommand*{\ie}{\emph{i.e.}\xspace}
+\newcommand*{\cf}{\emph{cf.}\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Units.
+
+\usepackage[squaren,Gray]{SIunits}
+\addunit{\flops}{flops}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Mathematics.
+
+%\useosf % no longer required if osf specified, otherwise after all math
+\DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
+\DeclareSymbolFontAlphabet{\mathbbold}{bbold}
+\RequirePackage{textcomp}  % required for special glyphs
+
+%% Parentheses:
+%\def\Paren{}\let\Paren\undefined
+\DeclarePairedDelimiterX{\Paren}[1]{(}{)}{#1}
+\DeclarePairedDelimiterX{\Brace}[1]{\{}{\}}{#1}
+\DeclarePairedDelimiterX{\Brack}[1]{[}{]}{#1}
+%\DeclarePairedDelimiterX{\Abs}[1]{\rvert}{\lvert}{#1}
+\DeclarePairedDelimiterX{\Abs}[1]{|}{|}{#1}
+\DeclarePairedDelimiterX{\Norm}[1]{\lVert}{\rVert}{#1}
+\DeclarePairedDelimiterX{\Avg}[1]{\langle}{\rangle}{#1}
+\DeclarePairedDelimiterX{\Round}[1]{\lfloor}{\rceil}{#1}
+\DeclarePairedDelimiterX{\Floor}[1]{\lfloor}{\rfloor}{#1}
+\DeclarePairedDelimiterX{\Ceil}[1]{\lceil}{\rceil}{#1}
+\DeclarePairedDelimiterX{\Inner}[1]{\langle}{\rangle}{#1}
+\DeclarePairedDelimiterX{\IntRange}[1]{\llbracket}{\rrbracket}{#1}
+\DeclarePairedDelimiterX{\Group}[1]{\lgroup}{\rgroup}{#1}
+%\DeclarePairedDelimiterX{\FrobNorm}[1]{\lVert}{\rVert_{\Tag{F}}}{#1}
+%% A list \List{ELEM}{START}{END}
+\DeclarePairedDelimiterXPP{\List}[3]{}{\{}{\}}{_{#2,\ldots,#3}}{#1}
+
+\newcommand*{\delimsize}{}
+\newcommand*{\suchthat}{\,\vert\,} % compact version
+\newcommand*{\SuchThat}{\,\delimsize\vert\,} % autoscale to surrounding version
+\newcommand*{\given}{\,\vert\,} % compact version
+\newcommand*{\Given}{\,\delimsize\vert\,} % autoscale to surrounding version
+%\newcommand*{\given}{\mathbin{\vert}}
+%\newcommand*{\Given}{\mathrel{\delimsize\vert}} % autoscale to surrounding version
+
+%% Upright letters.
+\newcommand*{\mathd}{\mathrm{d}}
+\newcommand*{\mathe}{\mathrm{e}}
+\newcommand*{\mathi}{\mathrm{i}}
+
+%% Operators/functions
+\renewcommand*{\Re}{\operatorname{Re}}
+\renewcommand*{\Im}{\operatorname{Im}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\rnd}{rnd}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\Card}{Card}
+\DeclareMathOperator{\Conv}{conv}
+%\DeclareMathOperator{\Det}{Det}
+\newcommand*{\Det}{\det}
+\DeclareMathOperator{\Diag}{diag}
+\DeclareMathOperator{\Dom}{dom}
+\DeclareMathOperator{\Prox}{prox}
+\DeclareMathOperator{\Rank}{rank}
+\DeclareMathOperator{\Sign}{sign}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Trace}{tr}
+\newcommand*{\trace}{\Trace}
+
+%% Statistics.
+%\DeclareMathOperator{\Var}{Var}
+%\DeclareMathOperator{\Cov}{Cov}
+%\DeclareMathOperator{\Expect}{E}
+%\newcommand*{\Expect}{\mathbb{E}}
+\DeclarePairedDelimiterXPP{\Var}[1]{\mathrm{Var}}(){}{#1}
+\DeclarePairedDelimiterXPP{\Cov}[1]{\mathrm{Cov}}(){}{#1}
+%\DeclarePairedDelimiterXPP{\Expect}[1]{\mathrm{E}}(){}{#1}
+\DeclarePairedDelimiterXPP{\Expect}[1]{\mathbb{E}}(){}{#1}
+\DeclarePairedDelimiterXPP{\LogPr}[1]{\ell}(){}{#1}
+
+%% Sets.
+\newcommand*{\Set}[1]{\mathbb{#1}}
+\newcommand*{\Reals}{\Set{R}}
+\newcommand*{\Integers}{\Set{Z}}
+\newcommand*{\NaturalNumbers}{\Set{N}}
+\newcommand*{\Rationals}{\Set{Q}}
+\newcommand*{\Complexes}{\Set{C}}
+
+% For function definitions: $f \from E \to F$.
+\newcommand*{\from}{{:}\:}
+
+%% Miscellaneous.
+\newcommand*{\Tag}[1]{\mathrm{#1}}
+\newcommand*{\PDer}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand*{\bydef}{\stackrel{{\scriptscriptstyle \text{def}}}{=}}
+
+%% Fractions.
+\newcommand*{\textfrac}[2]{{\textstyle\frac{#1}{#2}}}
+\newcommand*{\scriptfrac}[2]{{\scriptstyle\frac{#1}{#2}}}
+
+%% Linear algebra.
+\newcommand*{\V}[1]{\boldsymbol{#1}}   % a vector
+\newcommand*{\M}[1]{\mathbf{#1}}      % an operator (a matrix)
+%\newcommand*{\M}[1]{\boldsymbol{#1}}   % an operator (a matrix)
+
+%% Adjoint/transpose.
+\newcommand*{\Adj}{\top}
+%\newcommand*{\Adj}{\mathrm{t}}
+\newcommand*{\T}{^{\Adj}}
+\newcommand*{\mT}{^{-\Adj}}
+
+%% The following definition is to remove/reduce surrounding spacing around ⋅ to
+%% denote dot product.
+\let\origcdot=\cdot
+\renewcommand*{\cdot}{\mathord{\,\mathchar"2201\,}}
+%\renewcommand*{\cdot}{\,}
+\newcommand*{\Tcdot}{\T\!⋅}
+
+%% Matrices and vectors.
+%\newcommand{\ArrayWithDelimiters}[4]{%
+%  \left #1\begin{array}{#2}#4\end{array}\right #3}
+%\newcommand{\Matrix}[2]{\ArrayWithDelimiters{\lgroup}{#1}{\rgroup}{#2}}
+%\newcommand{\Vector}[1]{\ArrayWithDelimiters{\lgroup}{c}{\rgroup}{#1}}
+%\newcommand{\TwoByTwoMatrix}[4]{\Matrix{cc}{#1 & #2 \\ #3 & #4 \\}}
+%\newcommand{\TwoByTwoSymmetricMatrix}[3]{\TwoByTwoMatrix{#1}{#3}{#3}{#2}}
+
+%\newcommand*{\QuadTerm}[2]{#2\T\cdot#1\cdot#2}
+%\newcommand*{\One}{1\hspace*{-0.8ex}1}
+%\newcommand*{\Zero}{0\hspace*{-0.8ex}0}
+%\newcommand*{\One}{\mathbbm{1}}
+%\newcommand*{\Zero}{\mathbbm{0}}
+%\newcommand*{\One}{\mathds{1}}
+%\newcommand*{\Zero}{\mathds{O}}
+%\newcommand*{\Zero}{\V 0}
+%\newcommand*{\One}{\V 1}
+
+%------------------------------------------------------------------------------
+% Ref: Alexander R. Perlis., "A complement to \smash, \llap, and \rlap,"
+%      TUGboat, Vol. 22, pp. 350-352, 2001.
+%      <http://math.arizona.edu/~aprl/publications/mathclap/>
+%
+% For comparison, the existing overlap macros:
+% \def\llap#1{\hbox to 0pt{\hss#1}}
+% \def\rlap#1{\hbox to 0pt{#1\hss}}
+  \def\clap#1{\hbox to 0pt{\hss#1\hss}}
+  \def\mathllap{\mathpalette\mathllapinternal}
+  \def\mathrlap{\mathpalette\mathrlapinternal}
+  \def\mathclap{\mathpalette\mathclapinternal}
+  \def\mathllapinternal#1#2{\llap{$\mathsurround=0pt#1{#2}$}}
+  \def\mathrlapinternal#1#2{\rlap{$\mathsurround=0pt#1{#2}$}}
+  \def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
+%------------------------------------------------------------------------------
